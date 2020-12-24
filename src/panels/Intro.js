@@ -11,12 +11,13 @@ import './Intro.css';
 
 const osName = platform();
 
-const Intro = ({ id, snackbarError }) => {
+const Intro = ({ id, snackbarError, fetchedUser, userHasSeenIntro, go }) => {
 	return (
-		<Panel id={id}>
+		<Panel id={id} centered={true}>
 			<PanelHeader>
 				Замена статуса
 			</PanelHeader>
+			{(!userHasSeenIntro && fetchedUser) && 'Hello Word!'}
 			{snackbarError}
 		</Panel>
 	)
