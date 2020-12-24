@@ -5,12 +5,22 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
+import Intro from './panels/Intro';
+
+const ROUTES = {
+	HOME: 'home',
+	INTRO: 'intro'
+};
+
+const STOREGE_KEYS = {
+	STATUS: 'status',
+}
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
+	const [activePanel, setActivePanel] = useState(ROUTES.INTRO);
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [userHasSeenIntro, setuserHasSeenIntro] = useState(false);
 
 	useEffect(() => {
 		bridge.subscribe(({ detail: { type, data }}) => {
@@ -22,6 +32,10 @@ const App = () => {
 		});
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
+			const storageData = await bridge.send('VKWebAppStorageGet', {
+				keys:Object.values(STOREGE_KEYS)
+			});
+			console.log(storageData);
 			setUser(user);
 			setPopout(null);
 		}
@@ -34,8 +48,8 @@ const App = () => {
 
 	return (
 		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
+			<Home id={ROUTES.HOME} fetchedUser={fetchedUser} go={go} />
+			<Intro id={ROUTES.INTRO} go={go} />
 		</View>
 	);
 }
