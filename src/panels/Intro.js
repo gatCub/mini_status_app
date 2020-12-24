@@ -11,9 +11,9 @@ import './Intro.css';
 
 const osName = platform();
 
-const Intro = ({ id, snacsnackbarError }) => {
+const Intro = ({ id, snackbarError }) => {
 	return (
-		<Panel id={props.id}>
+		<Panel id={id}>
 			<PanelHeader>
 				Замена статуса
 			</PanelHeader>

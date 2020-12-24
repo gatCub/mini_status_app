@@ -15,7 +15,7 @@ const ROUTES = {
 	INTRO: 'intro'
 };
 
-const STOREGE_KEYS = {
+const STORAGE_KEYS = {
 	STATUS: 'status',
 }
 
@@ -81,7 +81,7 @@ const App = () => {
 	const viewIntro = async function () {
 		try {
 			await bridge.send('VKWebAppStorageSet', {
-				key: STOREGE_KEYS,
+				key: STORAGE_KEYS.STATUS,
 				value: JSON.stringify({
 					hasSeenIntro: true
 				})
@@ -95,7 +95,7 @@ const App = () => {
 					<Icon24Error fill='#fff' width='14' height='14'/>
 				</Avatar>}
 				duration={1000}>
-					Проблема с отправкой данных  Storage
+					Проблема с отправкой данных в Storage
 				</Snackbar>)
 		console.log(error);
 		}
