@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { platform, IOS } from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
-import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
-import Icon24Back from '@vkontakte/icons/dist/24/back';
+import Group from '@vkontakte/vkui/dist/components/Group/Group';
+import Div from '@vkontakte/vkui/dist/components/Div/Div';
+import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 
 import './Intro.css';
 
@@ -17,7 +17,16 @@ const Intro = ({ id, snackbarError, fetchedUser, userHasSeenIntro, go }) => {
 			<PanelHeader>
 				Замена статуса
 			</PanelHeader>
-			{(!userHasSeenIntro && fetchedUser) && 'Hello Word!'}
+			{(!userHasSeenIntro && fetchedUser) && 
+				<Fragment>
+					<Group>
+						<Div className='User'>
+							{fetchedUser.photo_200 && 
+							<Avatar src={fetchedUser.photo_200}/>}
+						</Div>
+					</Group>
+				</Fragment>
+			}
 			{snackbarError}
 		</Panel>
 	)
