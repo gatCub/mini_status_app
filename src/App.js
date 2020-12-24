@@ -9,6 +9,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Intro from './panels/Intro';
+import { Panel } from '@vkontakte/vkui';
 
 const ROUTES = {
 	HOME: 'home',
@@ -74,8 +75,8 @@ const App = () => {
 		fetchData();
 	}, []);
 
-	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
+	const go = panel => {
+		setActivePanel(panel);
 	};
 
 	const viewIntro = async function () {
@@ -86,6 +87,7 @@ const App = () => {
 					hasSeenIntro: true
 				})
 			})
+			go(ROUTES.HOME)
 		 } catch (error) {
 			setSnackbar(<Snackbar
 				layaut='vertical'
