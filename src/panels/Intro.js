@@ -11,13 +11,16 @@ import './Intro.css';
 
 const osName = platform();
 
-const Intro = props => (
-	<Panel id={props.id}>
-		<PanelHeader>
-			Замена статуса
-		</PanelHeader>
-	</Panel>
-);
+const Intro = ({ id, snacsnackbarError }) => {
+	return (
+		<Panel id={props.id}>
+			<PanelHeader>
+				Замена статуса
+			</PanelHeader>
+			{snackbarError}
+		</Panel>
+	)
+};
 
 Intro.propTypes = {
 	id: PropTypes.string.isRequired,
