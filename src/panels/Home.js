@@ -31,6 +31,7 @@ const Home = ({ id, go, fetchedUser }) => (
 	</Panel>
 );
 
+//Вывод данных пользователя
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,

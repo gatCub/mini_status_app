@@ -18,6 +18,7 @@ const ROUTES = {
 
 const STORAGE_KEYS = {
 	STATUS: 'status',
+	
 }
 
 const App = () => {
