@@ -85,7 +85,7 @@ const App = () => {
 			await bridge.send('VKWebAppStorageSet', {
 				key: STORAGE_KEYS.STATUS,
 				value: JSON.stringify({
-					hasSeenIntro: true
+					hasSeenIntro: true //123
 				})
 			})
 			go(ROUTES.HOME)
